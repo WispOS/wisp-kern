@@ -1,9 +1,0 @@
-[workspace]
-members = ["kernel"]
-resolver = "2"
-
-[workspace.dependencies]
-x86_64 = "0.15.2"
-uart_16550 = "0.4.0"
-spin = "0.10.0"
-bootloader = "0.11.15"

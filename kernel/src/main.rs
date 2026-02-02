@@ -1,20 +1,21 @@
 #![no_std]
 #![no_main]
 
-use core::arch::asm;
-
-entry_point!(kmain);
-fn kmain(boot_info: &'static mut BootInfo) -> ! {
-    println!("Hello, world!");
-    loop {
-        unsafe {
-            asm!("hlt");
-        }
-    }
+#[unsafe(no_mangle)]
+pub extern "C" fn _start() -> ! {
+    loop {}
 }
 
+// The starting point for the kernel.
+pub fn kernel_start() {}
+
+pub fn kernel_panic() {}
+pub fn kernel_exit() {}
+
+use core::panic::PanicInfo;
+
+/// This function is called on panic.
 #[panic_handler]
-#[cfg(not(test))]
-fn panic(info: &core::panic::PanicInfo) -> ! {
-    
+fn panic(_info: &PanicInfo) -> ! {
+    loop {}
 }
