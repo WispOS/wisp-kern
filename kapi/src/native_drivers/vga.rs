@@ -15,6 +15,16 @@ pub struct VgaHandle {
     pub mode: VgaMode,
     pub workspace_owner: WorkspaceID,
 }
+impl VgaHandle {
+    pub fn new(vga_mode: VgaMode) -> Self {
+        let vga_handle = VgaHandle {
+            mode: VgaMode::Default,
+            // 0 -> means that there is no workspace owner.
+            workspace_owner: 0,
+        };
+        vga_handle
+    }
+}
 
 impl HardwareHandle for VgaHandle {
     fn resettable() -> bool {

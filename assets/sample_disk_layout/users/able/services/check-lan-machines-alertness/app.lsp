@@ -13,5 +13,4 @@
  (defv running true)
  (while running (
   (sleep 10)
-  (network-ping-lan)))
-))
+  (network-ping-lan)))))

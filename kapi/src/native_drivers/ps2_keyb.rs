@@ -4,8 +4,16 @@ use crate::hardware::{HardwareHandle, interfaces::HWInterface};
 
 // A (probably) PS/2 keyboard
 pub struct KeyboardHandle {
-    internal_key_buffer: [char; 128],
+    pub internal_key_buffer: [char; 128],
 }
+impl KeyboardHandle {
+    pub fn default_ps2() -> Self {
+        Self {
+            internal_key_buffer: [' '; 128],
+        }
+    }
+}
+
 impl HardwareHandle for KeyboardHandle {
     fn resettable() -> bool {
         true
