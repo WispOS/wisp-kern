@@ -11,6 +11,7 @@
 (sampl-driver-start (print "Driver Started."))
 (sampl-driver-reset (print "Driver Reset."))
 */
+#![no_std]
 
 use crate::hardware::HWDesc;
 
