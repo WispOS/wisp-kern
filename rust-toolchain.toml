@@ -1,4 +1,3 @@
 [toolchain]
-channel = "nightly"
-components = ["llvm-tools"]
-targets = ["x86_64-unknown-none"]
+channel = "nightly-2025-01-01"
+components = ["llvm-tools", "rust-src"]
