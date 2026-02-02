@@ -11,10 +11,8 @@
 (sampl-driver-start (print "Driver Started."))
 (sampl-driver-reset (print "Driver Reset."))
 */
+
 #![no_std]
-
-use crate::hardware::HWDesc;
-
 mod hardware;
 
 pub type WorkspaceID = u32;
@@ -24,25 +22,3 @@ pub struct DesktopWorkspace {
     // This is akin to fullscreen. Use Meta+Esc to reset this back to desktop control.
     lock_display_ownership: bool,
 }
-
-// A (probably) PS/2 keyboard
-pub struct KeyboardHandle {
-    hw_desc: HWDesc,
-    internal_key_buffer: [char; 128],
-}
-
-pub struct VgaBufferWrapper {}
-
-pub enum VgaMode {
-    Default,
-}
-
-// A handle to the VGA buffer
-// Use this to track modes, which Workspace is using the VGAHandle
-pub struct VgaHandle {
-    hw_desc: HWDesc,
-    mode: VgaMode,
-    workspace_owner: WorkspaceID,
-}
-
-impl VgaHandle {}
