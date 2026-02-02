@@ -1,6 +1,8 @@
-use crate::hardware::interfaces::HWInterface;
+use crate::hardware::{device_types::HWTypes, interfaces::HWInterface};
+use alloc::vec::Vec;
 
-mod interfaces;
+pub mod device_types;
+pub mod interfaces;
 
 // A general purpose hardware description struct.
 // ALL HARDWARE should share these common features.
@@ -8,5 +10,7 @@ mod interfaces;
 pub trait HardwareHandle {
     // Resetability of hardware.
     fn resettable() -> bool;
-    // fn interfaces() -> Vec<HWInterface>;
+    fn interfaces() -> Vec<HWInterface>;
+    // Returns the types of a Handle
+    fn types() -> Vec<HWTypes>;
 }
