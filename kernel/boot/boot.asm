@@ -16,15 +16,13 @@ _start:
     mov al, 'S'
     int 0x10
     
+    call enable_a20
+    
     xor ax, ax
     mov es, ax
-    mov bx, 0x0500
-    
-    mov cx, 32
+    mov bx, 0x7E00
     
 .read_loop:
-    push cx
-    
     mov ah, 0x02
     mov al, 1
     mov ch, 0
@@ -32,14 +30,21 @@ _start:
     mov dh, 0
     mov dl, [boot_drive]
     int 0x13
-    jc disk_error
+    jc .done_reading
     
     inc byte [sector]
     add bx, 512
     
-    pop cx
-    loop .read_loop
+    cmp bx, 0
+    jne .read_loop
     
+    mov ax, es
+    add ax, 0x1000
+    mov es, ax
+    xor bx, bx
+    jmp .read_loop
+    
+.done_reading:
     mov ah, 0x0E
     mov al, 'D'
     int 0x10
@@ -53,12 +58,11 @@ _start:
     
     jmp 0x08:protected_mode
 
-disk_error:
-    mov ah, 0x0E
-    mov al, 'E'
-    int 0x10
-    cli
-    hlt
+enable_a20:
+    in al, 0x92
+    or al, 2
+    out 0x92, al
+    ret
 
 [BITS 32]
 protected_mode:
@@ -73,7 +77,12 @@ protected_mode:
     mov byte [0xB8000], 'P'
     mov byte [0xB8001], 0x0F
     
-    jmp 0x500
+    mov esi, 0x7E00
+    mov edi, 0x100000
+    mov ecx, 20480
+    rep movsd
+    
+    jmp 0x08:0x100000
 
 align 4
 gdt_start:
