@@ -47,5 +47,5 @@ echo -e "Total image size: $(stat -c%s "$OUTPUT_IMG") bytes"
 
 if [ "$1" == "--run" ]; then
     echo -e "${YELLOW}Launching QEMU...${NC}"
-    qemu-system-i386 -drive format=raw,file="$OUTPUT_IMG",index=0,media=disk
+    qemu-system-i386 -drive format=raw,file="$OUTPUT_IMG",index=0,media=disk -device ati-vga
 fi

@@ -1,6 +1,6 @@
 use crate::{
     hardware::{HardwareHandle, interfaces::HWInterface},
-    sysio::displayio::DisplayIO,
+    sysio::{consoleio::ConsoleIO, displayio::DisplayIO},
     workspace::WorkspaceID,
 };
 
@@ -51,21 +51,10 @@ impl HardwareHandle for VgaHandle {
     //     todo!()
     // }
 }
+
 // Used for A Graphical interface into the vga mode.
 impl DisplayIO for VgaHandle {
-    fn refresh(&mut self) {
-        let vga = self.buffer.ptr;
-
-        for y in 0..25 {
-            for x in 0..80 {
-                let offset = xy_to_idx(x, y, 80);
-                unsafe {
-                    *vga.offset(offset as isize * 2) = b' ' as u8;
-                    *vga.offset(offset as isize * 2 + 1) = 0x0f;
-                }
-            }
-        }
-    }
+    fn refresh(&mut self) {}
 }
 
 pub fn xy_to_idx(x: usize, y: usize, width: usize) -> usize {
