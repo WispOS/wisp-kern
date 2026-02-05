@@ -9,4 +9,6 @@ pub mod native_drivers;
 pub mod sysio;
 pub mod workspace;
 
-// extern crate alloc;
+pub fn init() {
+    idt::init_idt();
+}
