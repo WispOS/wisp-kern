@@ -9,8 +9,6 @@ impl SerialHandle {
     pub fn init(serial_address: u16) -> Self {
         let mut serial_port = unsafe { SerialPort::new(serial_address) };
         serial_port.init();
-        serial_port.send(b'a');
-        serial_port.try_receive();
         Self {
             ser_port: serial_port,
         }

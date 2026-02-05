@@ -24,21 +24,7 @@ fn panic(_info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
     let mut vga_handle = VgaHandle::new(VgaMode::Default);
     let mut serial_handle = SerialHandle::init(0x3F8);
-    // serial_handle.clear();
-
     loop {
-        let chara_ = serial_handle.ser_port.try_receive();
-        match chara_ {
-            Ok(a) => serial_handle.ser_port.send(a),
-            Err(b) => {
-                let mut serial_handle = SerialHandle::init(0x3F8);
-                serial_handle.clear();
-                for character in "KERNEL PANICKED".chars() {
-                    panic!();
-                    serial_handle.push_char(character as u8);
-                }
-            }
-        }
-        // unsafe { core::arch::asm!("hlt") }
+        unsafe { core::arch::asm!("hlt") }
     }
 }
