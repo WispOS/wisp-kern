@@ -1,4 +1,4 @@
-use alloc::vec;
+// use alloc::vec;
 
 use crate::hardware::{HardwareHandle, interfaces::HWInterface};
 
@@ -15,15 +15,15 @@ impl KeyboardHandle {
 }
 
 impl HardwareHandle for KeyboardHandle {
-    fn resettable() -> bool {
+    fn resettable(&mut self) -> bool {
         true
     }
 
-    fn interfaces() -> alloc::vec::Vec<HWInterface> {
-        vec![HWInterface::ps2_interface()]
-    }
+    // fn interfaces(&mut self) -> alloc::vec::Vec<HWInterface> {
+    //     vec![HWInterface::ps2_interface()]
+    // }
 
-    fn types() -> vec::Vec<crate::hardware::device_types::HWTypes> {
-        todo!()
-    }
+    // fn types(&mut self) -> vec::Vec<crate::hardware::device_types::HWTypes> {
+    //     todo!()
+    // }
 }

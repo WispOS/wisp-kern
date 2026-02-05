@@ -1,4 +1,11 @@
 #![no_std]
+#![feature(abi_x86_interrupt)]
 
 pub mod gdt;
+pub mod hardware;
 pub mod idt;
+pub mod native_drivers;
+pub mod sysio;
+pub mod workspace;
+
+// extern crate alloc;

@@ -1,4 +1,4 @@
 pub trait DisplayIO {
     //
-    fn refresh();
+    fn refresh(&mut self);
 }

@@ -163,27 +163,27 @@ pub fn gdt_init() {
 
 unsafe fn gdt_load() {
     unsafe {
-        core::arch::asm!(
-            "lgdt [{}]",
-            "mov ax, 0x10",
-            "mov ds, ax",
-            "mov es, ax",
-            "mov fs, ax",
-            "mov gs, ax",
-            "mov ss, ax",
-            "push 0x08",
-            "lea rax, [rip + 2f]",
-            "push rax",
-            "retfq",
-            "2:",
-            in(reg) addr_of!(GDT_POINTER),
-            out("rax") _,
-            options(nostack)
-        );
+        // core::arch::asm!(
+        //     "lgdt [{}]",
+        //     "mov ax, 0x10",
+        //     "mov ds, ax",
+        //     "mov es, ax",
+        //     "mov fs, ax",
+        //     "mov gs, ax",
+        //     "mov ss, ax",
+        //     "push 0x08",
+        //     "lea rax, [rip + 2f]",
+        //     "push rax",
+        //     "retfq",
+        //     "2:",
+        //     in(reg) addr_of!(GDT_POINTER),
+        //     out("rax") _,
+        //     options(nostack)
+        // );
         
-        core::arch::asm!(
-            "ltr {0:x}",
-            in(reg) 0x28u16,
-        );
+        // core::arch::asm!(
+        //     "ltr {0:x}",
+        //     in(reg) 0x28u16,
+        // );
     }
 }
