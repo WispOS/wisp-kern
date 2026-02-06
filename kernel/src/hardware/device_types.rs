@@ -1,7 +1,8 @@
+/// Hardware Types
 pub enum HWTypes {
-    // A graphical display.
+    /// A graphical display.
     Display,
 
-    // An input device.
+    /// An input device.
     Input,
 }

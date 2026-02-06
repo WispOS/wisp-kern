@@ -1,4 +1,4 @@
-// Called when a PIC Timer interrupt fires off.
+/// Called when a PIC Timer interrupt fires off.
 pub extern "x86-interrupt" fn timer_interrupt_handler() {
     // TODO: Fire off the scheduler to move tasks.
     // TODO: Fire off the scheduler to awake tasks that were slept.

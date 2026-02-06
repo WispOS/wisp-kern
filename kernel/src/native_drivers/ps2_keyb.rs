@@ -2,11 +2,14 @@
 
 use crate::hardware::{HardwareHandle, interfaces::HWInterface};
 
-// A (probably) PS/2 keyboard
+/// A (probably) PS/2 keyboard
 pub struct KeyboardHandle {
+    /// An internal key buffer.
+    // TODO: Replace this with a Key struct possibly put in Device Types
     pub internal_key_buffer: [char; 128],
 }
 impl KeyboardHandle {
+    /// Default ps2 keyboard setup
     pub fn default_ps2() -> Self {
         Self {
             internal_key_buffer: [' '; 128],

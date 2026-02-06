@@ -3,12 +3,9 @@
 
 use core::panic::PanicInfo;
 
-use kernel::{
-    native_drivers::{
-        serial::SerialHandle,
-        vga::{VgaHandle, VgaMode},
-    },
-    sysio::{consoleio::ConsoleIO, displayio::*},
+use kernel::native_drivers::{
+    serial::SerialHandle,
+    vga::{VgaHandle, VgaMode},
 };
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
@@ -24,6 +21,7 @@ fn panic(_info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
     let mut vga_handle = VgaHandle::new(VgaMode::Default);
     let mut serial_handle = SerialHandle::init(0x3F8);
+
     loop {
         unsafe { core::arch::asm!("hlt") }
     }
