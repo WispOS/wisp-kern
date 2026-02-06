@@ -3,8 +3,11 @@
 
 use crate::mailbox::Mailbox;
 
+/// A WorkspaceID uniquely identifiable.
 pub type WorkspaceID = u32;
 
+/// A workspace.
 pub struct Workspace {
-    mailbox: Mailbox,
+    /// The Workspace local [[Mailbox]].
+    pub mailbox: Mailbox,
 }
