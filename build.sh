@@ -25,12 +25,14 @@ objcopy -O binary "$KERNEL_ELF" "$KERNEL_BIN"
 
 echo -e "${YELLOW}Step 3: Assembling boot sector...${NC}"
 BOOT_BIN="$BUILD_DIR/boot.bin"
+SECOND_STAGE_BIN="$BUILD_DIR/second_stage.bin"
 nasm -f bin kernel/boot/boot.asm -o "$BOOT_BIN"
+nasm -f bin kernel/boot/second_stage.asm -o "$SECOND_STAGE_BIN"
 
 echo -e "${YELLOW}Step 4: Creating bootable image...${NC}"
 OUTPUT_IMG="wisp-kern.img"
 
-cat "$BOOT_BIN" "$KERNEL_BIN" > "$OUTPUT_IMG"
+cat "$BOOT_BIN" "$SECOND_STAGE_BIN" > "$OUTPUT_IMG"
 
 CURRENT_SIZE=$(stat -c%s "$OUTPUT_IMG")
 CYLINDER_SIZE=$((63 * 512))
