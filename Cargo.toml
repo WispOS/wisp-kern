@@ -3,4 +3,5 @@ members = ["kernel"]
 resolver = "2"
 
 [workspace.dependencies]
-x86_64 = { version = "0.15.4",  features = ["abi_x86_interrupt", "instructions"]}
+limine = "0.5"
+x86_64 = "0.15.4"

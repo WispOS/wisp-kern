@@ -3,18 +3,8 @@ name = "kernel"
 version = "0.1.0"
 edition = "2024"
 
-[profile.dev]
-panic = "abort"
-
-[profile.release]
-panic = "abort"
-
-[[bin]]
-name = "kernel"
-test = false
-bench = false
-
 
 [dependencies]
-uart_16550 = "0.4.0"
+limine = { workspace = true }
 x86_64 = { workspace = true }
+uart_16550 = "0.4.0"

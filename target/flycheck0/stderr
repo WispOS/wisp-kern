@@ -1,0 +1,96 @@
+   0.061044141s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="kernel"}: cargo::core::compiler::fingerprint: stale: missing "/home/gavin/repos/wisp-kern/kernel/linker-x86_64.ld"
+   0.061337323s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="kernel"}: cargo::core::compiler::fingerprint: fingerprint dirty for kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("kernel", ["lib"], "/home/gavin/repos/wisp-kern/kernel/src/lib.rs", Edition2024) }
+   0.061347574s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="kernel"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleDepFingerprint { unit: UnitIndex(11) })
+   0.061593696s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="build-script-build"}: cargo::core::compiler::fingerprint: fingerprint dirty for kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel)/RunCustomBuild/TargetInner { ..: custom_build_target("build-script-build", "/home/gavin/repos/wisp-kern/kernel/build.rs", Edition2024) }
+   0.061600516s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="build-script-build"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(MissingFile { path: "/home/gavin/repos/wisp-kern/kernel/linker-x86_64.ld" }))
+   0.062317322s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="kernel"}: cargo::core::compiler::fingerprint: fingerprint dirty for kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("kernel", ["lib"], "/home/gavin/repos/wisp-kern/kernel/src/lib.rs", Edition2024) }
+   0.062324822s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="kernel"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleDepFingerprint { unit: UnitIndex(11) })
+   0.062508324s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="kernel"}: cargo::core::compiler::fingerprint: fingerprint error for kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel)/Check { test: false }/TargetInner { name: "kernel", doc: true, ..: with_path("/home/gavin/repos/wisp-kern/kernel/src/main.rs", Edition2024) }
+   0.062514934s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="kernel"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gavin/repos/wisp-kern/target/debug/.fingerprint/kernel-2db034aeedb6d80c/bin-kernel`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: <&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call::<&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe, i32>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panicking.rs:581:40
+  16: std::panicking::catch_unwind::<i32, &dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panicking.rs:544:19
+  17: std::panic::catch_unwind::<&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe, i32>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{closure#0}
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call::<std::rt::lang_start_internal::{closure#0}, isize>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panicking.rs:581:40
+  20: std::panicking::catch_unwind::<isize, std::rt::lang_start_internal::{closure#0}>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panicking.rs:544:19
+  21: std::panic::catch_unwind::<std::rt::lang_start_internal::{closure#0}, isize>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   0.068799251s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="kernel"}: cargo::core::compiler::fingerprint: fingerprint error for kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel)/Check { test: true }/TargetInner { name: "kernel", doc: true, ..: with_path("/home/gavin/repos/wisp-kern/kernel/src/main.rs", Edition2024) }
+   0.068812281s  INFO prepare_target{force=false package_id=kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel) target="kernel"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/gavin/repos/wisp-kern/target/debug/.fingerprint/kernel-fa512695b0749bdf/test-bin-kernel`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: cargo_util::paths::read_bytes
+   1: cargo_util::paths::read
+   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   3: cargo::core::compiler::fingerprint::prepare_target
+   4: cargo::core::compiler::compile
+   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   6: cargo::ops::cargo_compile::compile_ws
+   7: cargo::ops::cargo_compile::compile_with_exec
+   8: cargo::ops::cargo_compile::compile
+   9: cargo::commands::check::exec
+  10: <cargo::cli::Exec>::exec
+  11: cargo::main
+  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  13: std::rt::lang_start::<()>::{closure#0}
+  14: <&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/core/src/ops/function.rs:287:21
+  15: std::panicking::catch_unwind::do_call::<&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe, i32>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panicking.rs:581:40
+  16: std::panicking::catch_unwind::<i32, &dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panicking.rs:544:19
+  17: std::panic::catch_unwind::<&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe, i32>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panic.rs:359:14
+  18: std::rt::lang_start_internal::{closure#0}
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/rt.rs:175:24
+  19: std::panicking::catch_unwind::do_call::<std::rt::lang_start_internal::{closure#0}, isize>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panicking.rs:581:40
+  20: std::panicking::catch_unwind::<isize, std::rt::lang_start_internal::{closure#0}>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panicking.rs:544:19
+  21: std::panic::catch_unwind::<std::rt::lang_start_internal::{closure#0}, isize>
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/panic.rs:359:14
+  22: std::rt::lang_start_internal
+             at /rustc/db3e99bbab28c6ca778b13222becdea54533d908/library/std/src/rt.rs:171:5
+  23: main
+  24: <unknown>
+  25: __libc_start_main
+  26: <unknown>
+   Compiling kernel v0.1.0 (/home/gavin/repos/wisp-kern/kernel)
+error: could not compile `kernel` (bin "kernel") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

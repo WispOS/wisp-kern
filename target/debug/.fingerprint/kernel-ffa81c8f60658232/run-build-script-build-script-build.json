@@ -1,0 +1,1 @@
+{"rustc":12529816280905606307,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[3684405822951458888,"build_script_build",false,6736992652227306274]],"local":[{"RerunIfChanged":{"output":"debug/build/kernel-ffa81c8f60658232/output","paths":["linker-x86_64.ld"]}}],"rustflags":[],"config":0,"compile_kind":0}
