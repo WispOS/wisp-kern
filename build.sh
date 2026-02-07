@@ -14,7 +14,7 @@ build_kernel() {
 
 setup_limine() {
     if [ ! -d "${LIMINE_DIR}" ]; then
-        git clone https://github.com --branch=v8.x-binary --depth=1
+        git clone https://github.com/limine-bootloader/limine.git --branch=v8.x-binary --depth=1
     fi
 }
 
@@ -60,8 +60,12 @@ create_disks() {
 find_ovmf() {
     SYS_CODE=$(find /usr/share/edk2* -name "OVMF_CODE*.fd" | head -n 1)
     SYS_VARS=$(find /usr/share/edk2* -name "OVMF_VARS*.fd" | head -n 1)
+
     
-    if [[ -z "$SYS_CODE" ]]; then echo "Missing edk2-ovmf"; exit 1; fi
+    if [[ -z "$SYS_CODE" ]]; then 
+        SYS_CODE=$(find /usr/share/OVMF* -name "OVMF_CODE*.fd" | head -n 1)
+        SYS_VARS=$(find /usr/share/OVMF* -name "OVMF_VARS*.fd" | head -n 1)
+    fi
 
     mkdir -p ovmf
     cp "$SYS_CODE" ovmf/ovmf-code.fd

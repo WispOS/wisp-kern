@@ -1,8 +1,8 @@
-/limine
-/ovmf
-/target
-/iso_root
-/kernel/target
+/limine/*
+/ovmf/*
+/target/*
+/iso_root/*
+/kernel/kernel
 *.lock
 *.iso
 *.hdd

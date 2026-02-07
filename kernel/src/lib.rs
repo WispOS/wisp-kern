@@ -10,5 +10,7 @@ pub mod sysio;
 pub mod workspace;
 
 pub fn init() {
+    gdt::gdt_init();
     idt::init_idt();
+    unsafe { idt::PICS.lock().initialize() };
 }
