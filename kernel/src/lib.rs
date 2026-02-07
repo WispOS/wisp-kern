@@ -16,6 +16,8 @@ pub mod idt;
 pub mod mailbox;
 /// The module containing native drivers.
 pub mod native_drivers;
+/// The module containing native services.
+pub mod native_service;
 
 /// The module defining Universe.
 pub mod universe;
